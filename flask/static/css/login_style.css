@@ -1,0 +1,86 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: #000;
+}
+
+.wrap {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    padding: 0% 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    margin-bottom: 10%;
+    padding: 10px 30px;
+    border-bottom: 5px solid #22499d;
+    justify-content: center;
+    align-items: center;
+    color: #009edb;
+    font-size: 80px;
+}
+
+.sign_wrap {
+    width: 100%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUpArea{
+    flex: 1;
+    padding: 30px;
+    margin-right: 10px;
+    border: 3px solid #b9b9b9;
+}
+
+.signInArea{
+    flex: 1;
+    padding: 30px;
+    margin-left: 10px;
+    border: 3px solid #b9b9b9;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input_row > input{
+    display: block;
+    width: 90%;
+    padding: 0% 5%;
+    margin: 3% 0%;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    border:none;
+}
+
+form > button {
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    background: #243450;
+    color: white;
+}
+
+#googleLogin {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    background: #243450;
+    color: white;
+}

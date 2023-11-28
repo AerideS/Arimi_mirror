@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="login_style.css"> <!-- 스타일 연결 -->
+    <script src="signUp_singIn.js" type="module"></script> <!-- 이메일 회원가입 및 로그인 자바스크립트 연결 -->
+    <script src=googleLogin.js type="module"></script> <!-- 구글 로그인 자바스크립트 연결 -->
+</head>
+
+<body>
+    <div class="wrap">
+        <h1 class="title">알 리 미</h1>
+        <div class="sign_wrap">
+            <div class="signUpArea">
+                <form>
+                    <h1>회원가입</h1>
+                    <div class="input_row">
+                        <input type="email" id="signUpEmail" placeholder="이메일">
+                        <input type="password" id="signUpPassword" placeholder="비밀번호">
+                    </div>
+                    <button type="submit" id="signUpButton">회원가입</button>
+                </form>
+            </div>
+            <div class="signInArea">
+                <form>
+                    <h1>로그인</h1>
+                    <div class="input_row">
+                        <input type="email" id="signInEmail" placeholder="이메일">
+                        <input type="password" id="signInPassword" placeholder="비밀번호">
+                    </div>
+                    <button type="submit" id="signInButton">로그인</button>
+                </form>
+            </div>
+        </div>
+        <div><button id="googleLogin">구글 아이디로 로그인</button></div>
+    </div>
+</body>
+
+</html>

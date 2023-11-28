@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home_style.css') }}">
+    <!-- <script src="{{ url_for('static', filename='script/add_noticeTag.js') }}"></script> -->
+</head>
+
+<body>
+    <div id="wrap">
+        <h1 class="title">알리미</h1>
+        <form class="inputArea" action="http://127.0.0.1:5000/user" method="POST">
+            <div class="input">
+                <input id="url" type="url" placeholder="추가할 게시판의 url을 입력하세요" name="URL">
+                <input id="name" type="text" placeholder="추가할 게시판의 이름을 입력하세요" name="Name">
+            </div>
+            <div class="addButton">
+                <input type="submit" value="추가하기" id="signUpButton" onclick="create_noticeTag();"></input>
+            </div>
+        </form>
+        <div class="boardArea">
+            <div class="board">
+                <aside id="left">
+                    <h3>추가한 게시판</h3>
+                    <ul id="tagArea">
+                        {% for doc in docs[0] %}
+                        <li><a href="{{doc['url']}}">{{doc['tag']}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </aside>
+            </div>
+            <section class="noticeArea">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th> 제목 </th>
+                            <th> 날짜 </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in docs[1] %}
+                        <tr>
+                            <td> {{doc['title']}}</td>
+                            <td> {{doc['date']}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

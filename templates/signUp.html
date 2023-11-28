@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signUp</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/signUp_signIn_style.css') }}"> <!-- 스타일 연결 -->
+    <script src="{{ url_for('static', filename='script/signUp.js') }}" type="module"></script> <!-- 회원가입 자바스크립트 연결 -->
+</head>
+
+<body>
+    <div class="wrap">
+        <h1 class="title">알 리 미</h1>
+        <div class="sign_wrap">
+            <div class="signArea">
+                <form>
+                    <h1>회원가입</h1>
+                    <div class="input_row">
+                        <input type="email" id="signUpEmail" placeholder="이메일">
+                        <input type="password" id="signUpPassword" placeholder="비밀번호">
+                    </div>
+                    <button type="submit" id="signUpButton">회원가입</button>
+                </form>
+            </div>
+        </div>
+        <div><button id="goToSignIn">로그인하러 가기</button></div>
+    </div>
+
+    <script>
+        // goToSignUp 버튼을 클릭하면 signUp.html로 이동하는 함수
+        document.getElementById("goToSignIn").addEventListener("click", function() {
+            window.location.href = "/"; // signUp 페이지로 이동
+        });
+    </script>
+</body>
+
+</html>

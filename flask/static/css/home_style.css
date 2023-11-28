@@ -1,0 +1,144 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: #000;
+}
+
+/* 제목 스타일 */
+.title {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    color: #009edb;
+}
+
+/* url, 게시판 제목 입력 스타일 */
+.inputArea {
+    display: flex;
+    width: 1400px;
+    padding: auto;
+    margin: auto;
+    margin-top: 10px;
+    /* border-radius: 10px; */
+    border: 3px solid #22499d;
+    align-items: center;
+    /* background-color: #009edb; */
+}
+
+.input {
+    flex: 5;
+    align-items: center;
+}
+
+.input > input{
+    display: block;
+    width: 93%;
+    margin: 10px;
+    padding: 0% 3%;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 1.0);
+    border-radius: 5px;
+    border:none;
+}
+
+/* 추가하기 버튼 스타일 */
+.addButton {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.addButton > input {
+    width: 100%;
+    height: 70px;
+    margin-left: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    background: #243450;
+    color: white;
+}
+
+/* 추가한 게시판 보드 스타일*/
+.boardArea {
+    width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.board {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: auto;
+    margin-top: 0px;
+    /* border-radius: 10px; */
+    background-color: #9b9b9b;
+}
+
+/* 여기서부터는 게시판 보드 스타일 참고함. 코드 출처: https://lcw126.tistory.com/153 */
+aside#left{
+    float: left;
+    width: 100%;
+}
+
+h3{
+    margin-bottom: 8px;
+    border-bottom: 3px solid black;
+    text-align: center;
+}
+
+aside#left ul li{
+    background-color: #3f3f3f;
+    padding: 5px 10px;
+    margin: 5px 0px;
+    border-bottom: 1px solid black;
+}
+ 
+aside#left ul li a{
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+}
+ 
+aside#left ul li:hover{
+    background-color: red;
+}
+ 
+aside#main{
+    float: left;
+}
+
+/* 공지사항 스타일 */
+.noticeArea {
+    flex: 7;
+    height: auto;
+    margin: auto;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #9b9b9b;
+    margin-left: 10px;
+}
+
+.noticeArea tr {
+    width: 100%;
+    margin: 5px;
+    /* justify-content: center;
+    align-items: center; */
+    background-color: white;
+    border-radius: 10px;
+}

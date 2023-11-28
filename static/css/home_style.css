@@ -1,0 +1,152 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+  list-style: none;
+  text-decoration: none;
+  border-collapse: collapse;
+  margin: 0px;
+  padding: 0px;
+  color: #000;
+}
+
+/* 제목 스타일 */
+.title {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 158, 219, 1);
+}
+
+/* url, 게시판명 입력 부분 스타일 */
+.inputArea {
+  display: flex;
+  width: 1400px;
+  padding: auto;
+  margin: auto;
+  margin-top: 10px;
+  border: 3px solid #22499d;
+  align-items: center;
+}
+
+.userInput {
+  flex: 5;
+  align-items: center;
+}
+
+.userInput > input {
+  display: block;
+  width: 93%;
+  margin: 10px;
+  padding: 0% 3%;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  border:none;
+}
+
+/* 추가하기 버튼 스타일 */
+.addButton {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.addButton > button {
+  width: 100%;
+  height: 70px;
+  margin-left: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  background: rgba(36, 52, 80, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* 추가한 게시판 보드 스타일*/
+.boardArea {
+  width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.board {
+  flex: 2;
+  justify-content: center;
+  padding: 10px;
+  margin: auto;
+  margin-top: 0px;
+  background-color: rgba(155, 155, 155, 1);
+}
+
+/* 추가한 게시판 보드 스타일, 코드 출처: https://lcw126.tistory.com/153 */
+aside#left {
+  float: left;
+  width: 100%;
+}
+
+h3 {
+  margin-bottom: 8px;
+  border-bottom: 3px solid #000;
+  text-align: center;
+}
+
+aside#left ul li form {
+  display: flex;
+  background-color: rgba(63, 63, 63, 1);
+  border-bottom: 1px solid #000;
+}
+
+aside#left ul li form a {
+  width: 80%;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+aside#left ul li form button {
+  width: 20%;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(36, 52, 80, 1);
+  padding: 5px 10px;
+} 
+
+aside#left ul li a:hover {
+  background-color: rgba(255, 0, 0, 1);
+}
+
+/* 공지사항 목록 스타일 */
+.noticeArea {
+  flex: 7;
+  display: flex;
+  height: auto;
+  margin-bottom: 10px;
+  justify-content: center;
+  background-color: rgba(155, 155, 155, 1);
+  margin-left: 10px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+#content > tr {
+  background-color: rgba(255, 255, 255, 1);
+  justify-content: center;
+  text-align: center;
+}
+
+td {
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+  padding: 5px 0px;
+}

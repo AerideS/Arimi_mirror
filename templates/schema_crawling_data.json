@@ -1,0 +1,22 @@
+{
+    "crawlingData" : [
+        {
+            "url" : "www.naver.com", 
+            "data" : [
+                {
+                    "id" : 1,
+                    "date" : "1701004749",
+                    "title" : "공지사항의 제목은 이런 위치에 들어갈 겁니다",
+                    "specific_url" : "www.naver.com/site1"
+                }
+            ],
+        
+            "users" : [
+                {
+                    "_id" : "odu3971"
+                }
+            ]
+        }
+    ]
+    
+}

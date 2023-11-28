@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>user</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- 구글 폰트 스타일시트 추가 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- css 파일 추가 -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home_style.css') }}">
+  <!-- 자바스크립트 파일 추가 -->
+  <script src="{{ url_for('static', filename='script/alert.js') }}"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <h1 class="title">알리미</h1>
+    <form class="inputArea" action="http://127.0.0.1:5000/user" method="POST">
+      <div class="userInput">
+          <input id="url" type="url" placeholder="추가할 게시판의 url을 입력하세요" name="URL" onkeyup="checkInputFilled();">
+          <input id="name" type="text" placeholder="추가할 게시판의 이름을 입력하세요" name="Name" onkeyup="checkInputFilled();">
+      </div>
+      <div class="addButton">
+          <button id="addButton" type="submit" disabled>추가하기</button>
+      </div>
+    </form>
+    <div class="boardArea">
+      <!-- 추가된 게시판 목록 -->
+      <section class="board">
+        <aside id="left">
+          <h3>추가한 게시판</h3>
+          <ul id="tagArea">
+            {% for doc in docs[0] %}
+            <li>
+              <form action="http://127.0.0.1:5000/user" method="post"> <!-- 삭제를 처리할 엔드포인트와 메소드 지정 -->
+                <input type="hidden" name="tag" value="{{ doc['tag'] }}"> <!-- 태그 정보를 숨은 필드로 전송 -->
+                <a href="{{ doc['url'] }}" target="_blank" rel="noopener noreferrer">{{ doc['tag'] }}</a>
+                <button type="submit">삭제</button>
+              </form>
+            </li>
+            {% endfor %}
+          </ul>
+        </aside>
+      </section>
+      <!-- 공지사항 목록 -->
+      <section class="noticeArea">
+        <table>
+          <thead id="table_head">
+            <tr>
+              <th><h3>제목</h3></th>
+              <th><h3>날짜</h3></th>
+              <th><h3>태그</h3></th>
+            </tr>
+          </thead>
+          <tbody id="content">
+            {% for doc in docs[1] %}
+            <tr>
+              <td>{{doc['title']}}</td>
+              <td>{{doc['date']}}</td>
+              <td>무슨무슨 공지</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</body>
+
+</html>

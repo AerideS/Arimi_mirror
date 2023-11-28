@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home_style.css') }}">
+    <script src="{{ url_for('static', filename='script/alert.js') }}"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1 class="title">알리미</h1>
+        <form class="inputArea" action="http://127.0.0.1:5000/user" method="POST">
+            <div class="userInput">
+                <input id="url" type="url" placeholder="추가할 게시판의 url을 입력하세요" name="URL" onkeyup="checkInputFilled();">
+                <input id="name" type="text" placeholder="추가할 게시판의 이름을 입력하세요" name="Name" onkeyup="checkInputFilled();">
+            </div>
+            <div class="addButton">
+                <button id="addButton" type="submit" disabled>추가하기</button>
+            </div>
+        </form>
+        <div class="boardArea">
+            <section class="board">
+                <aside id="left">
+                    <h3>추가한 게시판</h3>
+                    <ul id="tagArea">
+                    </ul>
+                </aside>
+            </section>
+            <section class="noticeArea">
+                <table>
+                    <thead id="table_head">
+                      <tr>
+                        <th style="width: 75%;"><h3>제목</h3></th>
+                        <th style="width: 12.5%;"><h3>날짜</h3></th>
+                        <th style="width: 12.5%;"><h3>태그</h3></th>
+                      </tr>
+                    </thead>
+                  </table>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
