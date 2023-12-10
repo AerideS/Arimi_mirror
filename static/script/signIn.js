@@ -59,7 +59,7 @@ document.getElementById("signInButton").addEventListener('click', (event) => {
             sendPost('/home', { email: signInEmail });
         })
         .catch((error) => {
-            alert('로그인 실패');
+            alert('잘못된 ID 또는 PW');
             const errorCode = error.code;
             const errorMessage = error.message;
         });
@@ -90,5 +90,6 @@ document.getElementById("googleLogin").addEventListener("click", () => {
             const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
             console.log(error);
+            alert('잘못된 ID 또는 PW');
         });
 });

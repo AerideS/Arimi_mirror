@@ -49,9 +49,24 @@ class NormalCrawler(Crawler):
                 if clean_title not in existing_data_titles:
                     single_data['title'] = clean_title
                     single_data['date'] = int(datetime.strptime(date_str, "%Y%m%d").timestamp())
+
+                    # data_id와 링크를 추가
+                    a_tag = tr_tag.find("a", class_="nttInfoBtn")
+                    if a_tag:
+                        single_data['data_id'] = a_tag.get('data-id')
+
+                        fixed_url=self.url.replace('List','Info')
+                        link = f"{fixed_url}&nttSn={single_data['data_id']}"
+                        single_data['link'] = link
+
                     self.data.append(single_data)
                     # 추가한 데이터의 타이틀을 기존 데이터에 추가
                     existing_data_titles.add(clean_title)
+
+    def crawl(self):
+        return self.data
+
+
 
 class BooksCrawler(Crawler):
     def execute_crawling(self, driver):
@@ -80,6 +95,60 @@ class BooksCrawler(Crawler):
 
                     self.data.append(single_data)
 
+    def crawl(self):
+        return self.data
+
+class LibCrawler(Crawler):
+    def execute_crawling(self, driver):
+        # 공지사항 목록 추출
+        articles = driver.find_elements(By.CSS_SELECTOR, 'tr.ikc-item[ng-repeat="article in articles"]')
+        # 결과를 저장할 리스트 초기화
+        data = []
+        existing_data_titles = set()  # 중복 데이터를 확인하기 위한 집합(set) 초기화
+
+        for article in articles:
+            # 기사 제목 추출
+            title_script = "return arguments[0].querySelector('span[ng-bind=\"article.title\"]').innerText"
+            title = driver.execute_script(title_script, article)
+            # 최종 업데이트 날짜 추출
+            date_script = "return arguments[0].querySelector('span[ng-if=\"!isShowLastUpdated\"]').innerText"
+            date_str = driver.execute_script(date_script, article)
+
+            # date의 .없앰
+            date_str = date_str.replace('.', '')
+
+            # date를 timestamp로 변환
+            date_timestamp = int(datetime.strptime(date_str, "%Y%m%d").timestamp())
+
+            # 공지사항 주소를 가져오기위함
+            a_tag = article.find_element(By.CLASS_NAME, 'ikc-item-title')
+            href = a_tag.get_attribute('href')
+
+            # 링크를 구현
+            link = f"https://lib.gnu.ac.kr/index.html{href}"
+
+            # 같은거 있는지 확인
+            if title not in existing_data_titles:
+                
+                existing_data_titles.add(title)
+
+                # 추출된 데이터로 딕셔너리 생성
+                single_data = {
+                    "title": title,
+                    "date": date_timestamp,
+                    "link": link  # 링크 추가
+                }
+                # 결과 데이터 리스트에 현재 항목의 데이터를 추가
+                data.append(single_data)
+
+        self.data = data
+
+    def crawl(self):
+        return self.data
+
+
+
+
 def crawling_page(url: str, page_num, page_len):
     crawling_data = {}
     driver = webdriver.Chrome()
@@ -89,19 +158,25 @@ def crawling_page(url: str, page_num, page_len):
     if url.startswith('https://books'):
         # BooksCrawler 인스턴스 생성
         crawler = BooksCrawler(url, page_num, page_len)
-    else:
+    elif url.startswith('https://www.gnu.ac.kr'):
         # NormalCrawler 인스턴스 생성
         crawler = NormalCrawler(url, page_num, page_len)
+    elif url.startswith('https://lib.gnu.ac.kr'):
+        # LibCrawler 인스턴스 생성
+        crawler = LibCrawler(url, page_num, page_len)
+    else:
+        raise ValueError("Unsupported URL")
 
     # execute_crawling 메서드 실행
     crawler.execute_crawling(driver)
-    crawling_data["data"] = crawler.data
+    crawling_data["data"] = crawler.crawl()
 
     driver.quit()
 
     return json.dumps(crawling_data, indent=4)
 
-# if __name__ == "__main__":
-#     # 예시 URL로 크롤링 실행
-#     print(json.loads(crawling_page("https://books.gnu.ac.kr/local/board/boardList.do?biserial=101", 1, 1)))
-#     print(json.loads(crawling_page("https://www.gnu.ac.kr/main/na/ntt/selectNttList.do?mi=1127&bbsId=1029", 1, 1)))
+if __name__ == "__main__":
+    # 예시 URL로 크롤링 실행
+    print(json.loads(crawling_page("https://books.gnu.ac.kr/local/board/boardList.do?biserial=101", 1, 1)))
+    print(json.loads(crawling_page("https://www.gnu.ac.kr/dorm/na/ntt/selectNttList.do?mi=7360&bbsId=2507", 1, 1)))
+    print(json.loads(crawling_page("https://lib.gnu.ac.kr/index.html#/bbs/notice?offset=0&max=20", 1, 1)))

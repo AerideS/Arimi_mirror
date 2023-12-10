@@ -36,8 +36,8 @@
             {% for doc in docs[0] %}
             <li>
               <form action="http://127.0.0.1:5000/user" method="post"> <!-- 삭제를 처리할 엔드포인트와 메소드 지정 -->
-                <input type="hidden" name="tag" value="{{ doc['tag'] }}"> <!-- 태그 정보를 숨은 필드로 전송 -->
-                <a href="{{ doc['url'] }}" target="_blank" rel="noopener noreferrer">{{ doc['tag'] }}</a>
+                <input type="hidden" value="{{ doc['url'] }}" name="DelURL"> <!--url을 숨은 필드로 전송 -->
+                <a href="{{doc['url']}}" target="_blank" rel="noopener noreferrer">{{ doc['tag'] }}</a>
                 <button type="submit">삭제</button>
               </form>
             </li>
@@ -50,17 +50,15 @@
         <table>
           <thead id="table_head">
             <tr>
-              <th><h3>제목</h3></th>
-              <th><h3>날짜</h3></th>
-              <th><h3>태그</h3></th>
+              <th style="width: 75%;"><h3>제목</h3></th>
+              <th style="width: 12.5%;"><h3>날짜</h3></th>
             </tr>
           </thead>
           <tbody id="content">
             {% for doc in docs[1] %}
             <tr>
-              <td>{{doc['title']}}</td>
+              <td><a href="{{doc['specific_url']}}" target="_blank" rel="noopener noreferrer">{{doc['title']}}</a></td>
               <td>{{doc['date']}}</td>
-              <td>무슨무슨 공지</td>
             </tr>
             {% endfor %}
           </tbody>

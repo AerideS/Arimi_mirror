@@ -146,6 +146,14 @@ table {
   text-align: center;
 }
 
+#content > tr > td > a:visited {
+  color: rgba(128, 0, 128, 1);
+}
+
+#content > tr > td > a:hover {
+  color: rgba(255, 0, 0, 1);
+}
+
 td {
   border-bottom: 1px solid rgba(211, 211, 211, 1);
   padding: 5px 0px;

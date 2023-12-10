@@ -38,10 +38,21 @@ document.getElementById("signUpButton").addEventListener('click', (event) => {
             window.location.href = "/";
         })
         .catch((error) => {
-            console.log('회원가입 실패')
             const errorCode = error.code;
             const errorMessage = error.message;
-            // ..
+             if (error.code === 'auth/invalid-email') {
+                //이메일 형식이 아니거나 비밀번호가 6자리 미만인 경우
+                console.log(error);
+                alert('회원가입 실패\n올바른 이메일 형식이 아니거나 비밀번호가 6자리 미만입니다.');
+              } 
+              else if (error.code === 'auth/email-already-in-use'){
+                //이미 가입한 경우
+                console.log(error);
+                alert('회원가입 실패\n이미 회원가입된 이메일입니다');
+              }
+              else {
+                console.log(error);
+              }
         });
 
 })
